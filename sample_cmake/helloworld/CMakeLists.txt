@@ -5,5 +5,6 @@ project(project_helloworld)
 set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE FILEPATH "")
 enable_testing()
 
-add_subdirectory(src)
-add_subdirectory(test)
+add_subdirectory(helloworld)
+add_subdirectory(helloworld_test)
+add_subdirectory(main)

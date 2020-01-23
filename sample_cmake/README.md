@@ -1,3 +1,9 @@
+> cd study.cpp/sample_cmake/libhello
+> cmake .
+> cmake --build . --target install
+
+> cd study.cpp/sample_cmake/helloworld
+
 project/
 
 ``` cmake
@@ -15,6 +21,7 @@ add_subdirectory(app)
 
 
 ..somewhere/lib/lib1
+
 ```cmake
 enable_testing()
 add_subdirectory(src)

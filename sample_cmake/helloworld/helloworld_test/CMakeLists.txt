@@ -25,6 +25,7 @@ target_link_libraries(
   ${PROJECT_NAME}
   PRIVATE
   lib::hello
+  _helloworld
   GTest::gtest
   GTest::gtest_main
   GTest::gmock

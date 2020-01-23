@@ -30,4 +30,5 @@ target_link_libraries(
 	${PROJECT_NAME}
 	PRIVATE
 	lib::hello
+	lib::helloworld
 )

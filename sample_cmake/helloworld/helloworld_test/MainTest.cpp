@@ -1,18 +1,9 @@
 #include "gtest/gtest.h"
-
-double square_root (double num)
-{
-	if (num < 0.0)
-	{
-		std::cerr << "Error: Negative Input\n";
-		exit(255);
-	}
-    return 0;
-}
+#include "Main.hpp"
 
 TEST (SquareRootTest, ZeroAndNegativeNos)
 {
-    ASSERT_EQ (0.0, square_root(0.0));
+    ASSERT_EQ (3, Add(1, 2));
 }
 
 int main(int argc, char **argv)
