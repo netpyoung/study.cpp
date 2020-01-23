@@ -3,6 +3,8 @@
 > cmake --build . --target install
 
 > cd study.cpp/sample_cmake/helloworld
+> cmake .
+
 
 project/
 

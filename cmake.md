@@ -140,3 +140,84 @@ https://cmake.org/cmake/help/v3.16/command/source_group.html
 
 
 https://gitlab.kitware.com/cmake/community/wikis/doc/tutorials/How-to-create-a-ProjectConfig.cmake-file
+
+
+https://stackoverflow.com/questions/53583286/cmake-file-for-integrated-visual-studio-unit-testing/53585782#53585782
+- Visual studio installer -> test adapter for google test
+- Tools > Options > Test Adapter for Google Test  > General > Regex for test discovery > ` _test.exe`
+
+CTRL+R, A      | Run All Tests
+Ctrl+R, Ctrl+A | Debug All Tests
+Ctrl+R, L      | Repeat Last run
+CTRL+R, D      | Debug Last run
+
+
+TODO
+CTEST_OUTPUT_ON_FAILURE
+- https://stackoverflow.com/questions/36726545/replace-ctest-command-with-ctest-output-on-failure-permanently-for-a-specifi
+
+https://github.com/google/googletest/blob/master/googletest/docs/advanced.md#teaching-googletest-how-to-print-your-values
+
+
+	ASSERT_TRUE(!result.has_value()) << "WTF";
+
+
+https://stackoverflow.com/a/16491892
+
+
+
+
+
+## [vcpkg](https://github.com/Microsoft/vcpkg)
+
+``` ps
+PS> cd /
+PS> git clone https://github.com/Microsoft/vcpkg.git
+PS> cd vcpkg
+PS> .\bootstrap-vcpkg.bat
+PS> .\vcpkg install gtest:x86-windows gtest:x86-windows-static gtest:x64-windows gtest:x64-windows-static
+```
+
+### [triplets](https://github.com/microsoft/vcpkg/blob/master/docs/users/triplets.md)
+
+``` cmd
+VCPKG_DEFAULT_TRIPLET=x64-windows
+vcpkg install gtest gmock gtest_main gmock_main --triplet x64-windows
+```
+
+## CMake
+
+[cmake: env variables](https://cmake.org/cmake/help/latest/manual/cmake-env-variables.7.html)
+
+- environ
+
+``` cmd
+VCPKG_ROOT=C:\vcpkg
+CMAKE_TOOLCHAIN_FILE=%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake
+CMAKE_ROOT=C:\Program Files (x86)\CMake\share\cmake-3.14
+CMAKE_MODULE_PATH=%CMAKE_ROOT%\Modules
+```
+
+``` cmd
+// x86
+cmake -DCMAKE_GENERATOR_PLATFORM=x86 .
+
+// x64
+cmake -DCMAKE_GENERATOR_PLATFORM=x64 .
+```
+
+``` cmd
+> cmake .
+> cmake --build .
+```
+
+## [CTest](https://cmake.org/cmake/help/latest/manual/cmake.1.html#build-tool-mode)
+
+``` cmd
+> ctest -C Debug
+```
+
+``` cmake
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+```

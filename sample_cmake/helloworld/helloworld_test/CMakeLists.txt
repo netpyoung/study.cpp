@@ -1,4 +1,6 @@
-project(helloworld_test)
+project(helloworld_test
+	LANGUAGES CXX)
+
 set(GTest_ROOT "$ENV{VCPKG_ROOT}\\packages\\gtest_x64-windows\\share\\gtest")
 find_package(GTest CONFIG REQUIRED)
 
@@ -25,7 +27,7 @@ target_link_libraries(
   ${PROJECT_NAME}
   PRIVATE
   lib::hello
-  _helloworld
+  lib_helloworld
   GTest::gtest
   GTest::gtest_main
   GTest::gmock

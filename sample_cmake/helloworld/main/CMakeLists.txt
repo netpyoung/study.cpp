@@ -1,4 +1,6 @@
-project(helloworld)
+project(helloworld
+	VERSION 1.0.0
+	LANGUAGES CXX)
 
 file(GLOB_RECURSE public **.hpp)
 file(GLOB_RECURSE private **.cpp)
@@ -30,5 +32,5 @@ target_link_libraries(
 	${PROJECT_NAME}
 	PRIVATE
 	lib::hello
-	lib::helloworld
+	lib_helloworld
 )

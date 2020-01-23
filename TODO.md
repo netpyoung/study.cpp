@@ -28,3 +28,9 @@ https://stackoverflow.com/a/613132
 
 
 delete - https://github.com/netpyoung/netpyoung.Notes/blob/master/dev/tool_info/Cmake.md
+
+
+c++14: binary literal, digit seperator
+int i = 0b0011;
+int j = 0B01101001;
+int k = 0B0101'0111'1100;
