@@ -1,10 +1,5 @@
 #include "gtest/gtest.h"
-#include "helloworld/Simple.hpp"
-
-TEST (SquareRootTest, ZeroAndNegativeNos)
-{
-    ASSERT_EQ (3, helloworld::Add(1, 2));
-}
+#include "HelloworldTest.hpp"
 
 int main(int argc, char **argv)
 {

@@ -5,6 +5,11 @@
 > cd study.cpp/sample_cmake/helloworld
 > cmake .
 
+ctest -C debug
+
+
+https://gitlab.kitware.com/cmake/cmake/issues/19145
+interface
 
 libhello
 hello
@@ -36,10 +41,20 @@ test's exe
 	set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
 ```
 
-``` ref
+``` cmake
+if(DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+  set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}\\scripts\\buildsystems\\vcpkg.cmake" CACHE STRING "")
+endif()
+```
+
+``` cmake
 find_package(doctest CONFIG REQUIRED)
 target_link_libraries(main PRIVATE doctest::doctest)
 ```
+Instead of using find_package(), we recommend using find_path() and find_library() as detailed towards the bottom of our CMake Example.
+
+
+
 
 
 

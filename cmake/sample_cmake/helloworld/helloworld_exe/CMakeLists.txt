@@ -1,10 +1,12 @@
-project(helloworld VERSION 1.0.0 LANGUAGES CXX)
+project(helloworld_exe VERSION 1.0.0 LANGUAGES CXX)
 
 file(GLOB_RECURSE public **.hpp)
 file(GLOB_RECURSE private **.cpp)
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${public} ${private})
 
 add_executable(${PROJECT_NAME} ${public} ${private})
+
+#target_link_libraries(${PROJECT_NAME} helloworld_lib)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(${PROJECT_NAME}	PRIVATE cxx_std_17)
@@ -28,5 +30,5 @@ target_link_libraries(
 	${PROJECT_NAME}
 	PRIVATE
 	lib::hello
-	lib_helloworld
+	helloworld_lib
 )

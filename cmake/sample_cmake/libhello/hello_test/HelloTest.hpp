@@ -1,5 +1,7 @@
+#pragma once
+
 #include "gtest/gtest.h"
-#include "hello.hpp"
+#include "hello/Hello.hpp"
 
 using namespace hello;
 

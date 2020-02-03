@@ -1,4 +1,4 @@
-#include "hello.hpp"
+#include "Hello.hpp"
 
 namespace hello
 {
@@ -6,5 +6,4 @@ namespace hello
 	{
 		return a + b;
 	}
-
 }
