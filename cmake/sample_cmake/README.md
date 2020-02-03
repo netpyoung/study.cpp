@@ -6,6 +6,43 @@
 > cmake .
 
 
+libhello
+hello
+hello_test
+
+libworld // interface (header only)
+world
+world_test
+
+helloworld
+helloworld
+helloworld_test
+helloworld_exe
+
+
+add_executable
+
+library / exe
+```
+target_compile_options(${PROJECT_NAME} PRIVATE /WX /Wall /utf-8)
+target_compile_features(${PROJECT_NAME}	PRIVATE cxx_std_17)
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
+```
+
+test's exe
+```
+	target_compile_options(${PROJECT_NAME} PRIVATE /utf-8)
+	target_compile_features(${PROJECT_NAME}	PRIVATE cxx_std_17)
+	set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
+```
+
+``` ref
+find_package(doctest CONFIG REQUIRED)
+target_link_libraries(main PRIVATE doctest::doctest)
+```
+
+
+
 project/
 
 ``` cmake

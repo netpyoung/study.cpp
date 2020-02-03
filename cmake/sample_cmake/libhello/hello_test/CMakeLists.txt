@@ -8,7 +8,7 @@ if (BUILD_TEST)
 	source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${public} ${private})
 
 
-	set(GTest_ROOT "$ENV{VCPKG_ROOT}\\packages\\gtest_x64-windows\\share\\gtest")	
+	#set(GTest_ROOT "$ENV{VCPKG_ROOT}\\packages\\gtest_x64-windows\\share\\gtest")	
 	find_package(GTest CONFIG REQUIRED)
 
 
