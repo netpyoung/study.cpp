@@ -1,3 +1,25 @@
+https://stackoverflow.com/a/7725055
+
+``` cmd
+mkdir Release
+cd Release
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+```
+
+``` cmd
+mkdir Debug
+cd Debug
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make
+```
+
+``` cmake
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
+```
+
+
 Cache
 set(MY_CACHE_VARIABLE "VALUE" CACHE STRING "Description")
 CMakeCache.txt
