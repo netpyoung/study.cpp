@@ -1,4 +1,7 @@
+/MP : 멀티프로세스 컴파일
+/Gm : 미니말 리빌드
 
+MP/Gm 서로 충돌
 ## TODO
 
 - <https://github.com/dattanchu/bprinter>
