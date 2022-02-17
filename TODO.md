@@ -34,3 +34,16 @@ c++14: binary literal, digit seperator
 int i = 0b0011;
 int j = 0B01101001;
 int k = 0B0101'0111'1100;
+
+
+https://docs.microsoft.com/en-us/cpp/preprocessor/optimize?view=msvc-170
+#pragma optimize("gpsy", off)
+#pragma optimize("gpsy", on)
+
+g Enable global optimizations.
+s Specify short or fast sequences of machine code.
+y Generate frame pointers on the program stack.
+
+#pragma optimize( "", off )
+/* unoptimized code section */
+#pragma optimize( "", on )
