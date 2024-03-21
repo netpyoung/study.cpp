@@ -1,0 +1,13 @@
+[book]
+title = "study.cpp"
+description = "study.cpp"
+language = "kr"
+multilingual = false
+src = "src"
+
+[output.html]
+no-section-label = true
+site-url = "/study.cpp/"
+git-repository-url = "https://github.com/netpyoung/study.cpp"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/netpyoung/study.cpp/edit/main/{path}"
