@@ -1,0 +1,401 @@
+<!DOCTYPE HTML>
+<html lang="kr" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>study.cpp</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="study.cpp">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="Index.html">들어가며</a></li><li class="chapter-item expanded affix "><li class="part-title">CMake</li><li class="chapter-item expanded "><a href="cmake/cmake.html">cmake</a></li><li class="chapter-item expanded affix "><li class="part-title">DirectDraw</li><li class="chapter-item expanded "><a href="directdraw/direct2d.html">direct2d</a></li><li class="chapter-item expanded affix "><li class="part-title">Package</li><li class="chapter-item expanded "><a href="packagemanager/vcpkg.html">vcpkg</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">study.cpp</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/netpyoung/study.cpp" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="들어가며"><a class="header" href="#들어가며">들어가며</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><p>https://stackoverflow.com/a/7725055</p>
+<pre><code class="language-cmd">mkdir Release
+cd Release
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+</code></pre>
+<pre><code class="language-cmd">mkdir Debug
+cd Debug
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make
+</code></pre>
+<pre><code class="language-cmake">set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
+</code></pre>
+<p>Cache
+set(MY_CACHE_VARIABLE "VALUE" CACHE STRING "Description")
+CMakeCache.txt</p>
+<p>target_include_directories(mylib PUBLIC include)
+target_include_directories(mylib PRIVATE src)</p>
+<p>include_directories is directory scope
+target_include_directories is target scope</p>
+<p>PUBLIC
+PRIVATE
+INTERFACE</p>
+<p>target_link_libraries</p>
+<p>3.4+</p>
+<p>add_executable
+add_library</p>
+<p>get_target_property
+set_target_properties
+get_property(TARGET)
+set_property(TARGET)
+target_compile_features
+target_compile_options
+target_link_libraries
+target_sources</p>
+<p>PRIVATE - non-INTERFACE_ 속성
+INTERFACE - INTERFACE_ 속성
+PUBLIC - 둘다</p>
+<p>https://stackoverflow.com/questions/31969547/what-is-the-difference-between-include-directories-and-target-include-directorie
+https://cmake.org/cmake/help/latest/command/target_include_directories.html</p>
+<p><a href="https://gist.github.com/luncliff/6e2d4eb7ca29a0afd5b592f72b80cb5c">CMake 할때 쪼오오금 도움이 되는 문서</a></p>
+<p><a href="https://www.youtube.com/watch?v=eC9-iRN2b04">CppCon 2017: Mathieu Ropert “Using Modern CMake Patterns to Enforce a Good Modular Design”</a>
+<a href="https://www.youtube.com/watch?v=bsXLMQ6WgIk">C++Now 2017: Daniel Pfeifer “Effective CMake”</a>
+<a href="https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1">gist: Effective Modern CMake</a></p>
+<p>https://cliutils.gitlab.io/modern-cmake/
+https://github.com/pr0g/cmake-examples</p>
+<p>target_compile_options PRIVATE -Wall
+PUBLIC과 INTERFACE용으로 넣지말것!</p>
+<h1 id="dont-use"><a class="header" href="#dont-use">DON'T USE</a></h1>
+<p>affect all targets
+add_compiler_options
+include_directories
+ADD_DEFINITIONS
+LINK_LIBRARIES</p>
+<p>CMAKE_CXX_FLAGS 손대지 말것.</p>
+<p>보류.. file(GLOB)</p>
+<ul>
+<li>https://stackoverflow.com/questions/1027247/is-it-better-to-specify-source-files-with-glob-or-each-file-individually-in-cmak/18538444
+개발할때 빡심
+CONFIGURE_DEPENDS는 하지않는 선에서</li>
+</ul>
+<p>file(GLOB to_remove file_to_remove.cpp)
+list(REMOVE_ITEM list ${to_remove})</p>
+<hr />
+<p>add_custom_command(
+OUTPUT      src/simple.cpp              # &lt;-- output path
+COMMAND     echo    "my first command"  # &lt;-- command + args
+)</p>
+<p>if(WIN32)
+add_custom_command(
+OUTPUT      src/simple.cpp
+COMMAND     call ${CMAKE_CURRENT_SOURCE_DIR}/scripts/create_simple_cpp.sh
+WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+COMMENT     "creating simple.cpp"
+)
+elseif(UNIX)
+add_custom_command(
+OUTPUT      src/simple.cpp
+COMMAND     bash ${CMAKE_CURRENT_SOURCE_DIR}/scripts/create_simple_cpp.sh
+WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+COMMENT     "creating simple.cpp"
+)</p>
+<p>add_custom_target(get_index_html
+COMMAND curl -L "https://cmake.org/cmake/help/latest/"
+-o "index.html"
+WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+)</p>
+<p>find_package(fmt  5.3
+CONFIG
+REQUIRED
+PATHS       C:/vcpkg/installed/x64-windows
+/mnt/vcpkg/installed/x64-linux
+)</p>
+<p>find_package(Boost  1.59
+CONFIG                      # &lt;--- try without CONFIG if the function fails !
+REQUIRED
+COMPONENTS system thread timer
+)</p>
+<p>endif()</p>
+<p>set_target_properties(my_modern_cpp_lib
+PROPERTIES
+CXX_STANDARD 17
+)</p>
+<p>source_group
+source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/src" FILES ${HEADER_} ${SOURCE_})
+https://cmake.org/cmake/help/v3.16/command/source_group.html</p>
+<p>https://gitlab.kitware.com/cmake/community/wikis/doc/tutorials/How-to-create-a-ProjectConfig.cmake-file</p>
+<p>https://stackoverflow.com/questions/53583286/cmake-file-for-integrated-visual-studio-unit-testing/53585782#53585782</p>
+<ul>
+<li>Visual studio installer -&gt; test adapter for google test</li>
+<li>Tools &gt; Options &gt; Test Adapter for Google Test  &gt; General &gt; Regex for test discovery &gt; <code> _test.exe</code></li>
+</ul>
+<p>CTRL+R, A      | Run All Tests
+Ctrl+R, Ctrl+A | Debug All Tests
+Ctrl+R, L      | Repeat Last run
+CTRL+R, D      | Debug Last run</p>
+<p>TODO
+CTEST_OUTPUT_ON_FAILURE</p>
+<ul>
+<li>https://stackoverflow.com/questions/36726545/replace-ctest-command-with-ctest-output-on-failure-permanently-for-a-specifi</li>
+</ul>
+<p>https://github.com/google/googletest/blob/master/googletest/docs/advanced.md#teaching-googletest-how-to-print-your-values</p>
+<pre><code>ASSERT_TRUE(!result.has_value()) &lt;&lt; "WTF";
+</code></pre>
+<p>https://stackoverflow.com/a/16491892</p>
+<h2 id="vcpkg"><a class="header" href="#vcpkg"><a href="https://github.com/Microsoft/vcpkg">vcpkg</a></a></h2>
+<pre><code class="language-ps">PS&gt; cd /
+PS&gt; git clone https://github.com/Microsoft/vcpkg.git
+PS&gt; cd vcpkg
+PS&gt; .\bootstrap-vcpkg.bat
+PS&gt; .\vcpkg install gtest:x86-windows gtest:x86-windows-static gtest:x64-windows gtest:x64-windows-static
+</code></pre>
+<h3 id="triplets"><a class="header" href="#triplets"><a href="https://github.com/microsoft/vcpkg/blob/master/docs/users/triplets.md">triplets</a></a></h3>
+<pre><code class="language-cmd">VCPKG_DEFAULT_TRIPLET=x64-windows
+vcpkg install gtest gmock gtest_main gmock_main --triplet x64-windows
+</code></pre>
+<h2 id="cmake"><a class="header" href="#cmake">CMake</a></h2>
+<p><a href="https://cmake.org/cmake/help/latest/manual/cmake-env-variables.7.html">cmake: env variables</a></p>
+<ul>
+<li>environ</li>
+</ul>
+<pre><code class="language-cmd">VCPKG_ROOT=C:\vcpkg
+CMAKE_TOOLCHAIN_FILE=%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake
+CMAKE_ROOT=C:\Program Files (x86)\CMake\share\cmake-3.14
+CMAKE_MODULE_PATH=%CMAKE_ROOT%\Modules
+</code></pre>
+<pre><code class="language-cmd">// x86
+cmake -DCMAKE_GENERATOR_PLATFORM=x86 .
+
+// x64
+cmake -DCMAKE_GENERATOR_PLATFORM=x64 .
+</code></pre>
+<pre><code class="language-cmd">&gt; cmake .
+&gt; cmake --build .
+</code></pre>
+<h2 id="ctest"><a class="header" href="#ctest"><a href="https://cmake.org/cmake/help/latest/manual/cmake.1.html#build-tool-mode">CTest</a></a></h2>
+<pre><code class="language-cmd">&gt; ctest -C Debug
+</code></pre>
+<pre><code class="language-cmake">set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="direct2d"><a class="header" href="#direct2d">direct2d</a></h1>
+<p>https://mydevnote.tistory.com/177</p>
+<div class="table-wrapper"><table><thead><tr><th>Direct2D</th><th></th></tr></thead><tbody>
+<tr><td>1.1</td><td>Windows 8 in October 2012</td></tr>
+<tr><td>1.2</td><td>Windows 8.1 in October 2013</td></tr>
+<tr><td>1.3</td><td>Windows 10 in July 2015</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="vcpkg-1"><a class="header" href="#vcpkg-1"><a href="https://github.com/Microsoft/vcpkg">vcpkg</a></a></h1>
+<pre><code class="language-ps">PS&gt; cd /
+PS&gt; git clone https://github.com/Microsoft/vcpkg.git
+PS&gt; cd vcpkg
+PS&gt; .\bootstrap-vcpkg.bat
+PS&gt; .\vcpkg install gtest:x86-windows gtest:x86-windows-static gtest:x64-windows gtest:x64-windows-static
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
