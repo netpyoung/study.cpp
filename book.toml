@@ -1,7 +1,7 @@
 [book]
 title = "study.cpp"
 description = "study.cpp"
-language = "kr"
+language = "ko"
 multilingual = false
 src = "src"
 
