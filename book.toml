@@ -2,7 +2,6 @@
 title = "study.cpp"
 description = "study.cpp"
 language = "ko"
-multilingual = false
 src = "src"
 
 [output.html]
